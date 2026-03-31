@@ -20,7 +20,13 @@ Your friendly neighborhood Chrome extension for browsing with AI superpowers - r
 - **Model selection** - Use any of your downloaded Ollama models
 - **Auto-capture** - Quick actions automatically grab the current tab content
 
-## Screenshots
+## Demo
+
+### Simplify Content
+<video src="assets/simplify_ai_hub.mov" controls width="600"></video>
+
+### Summarize GitHub Issues
+<video src="assets/issue_summary.mov" controls width="600"></video>
 
 | Simplify content | Key points extraction |
 |:--:|:--:|
