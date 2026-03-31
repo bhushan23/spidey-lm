@@ -237,12 +237,10 @@ async function sendMessage(userMessage, systemPrompt = null) {
   enableUI();
 }
 
-// Quick actions with auto-capture
+// Quick actions with auto-capture (always captures current tab)
 async function quickAction(userMessage, systemPrompt) {
-  if (!pageContext) {
-    const captured = await capturePage();
-    if (!captured) return;
-  }
+  const captured = await capturePage();
+  if (!captured) return;
   sendMessage(userMessage, systemPrompt);
 }
 
