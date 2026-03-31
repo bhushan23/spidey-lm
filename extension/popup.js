@@ -13,26 +13,28 @@ const sendBtn = document.getElementById('send-btn');
 const clearBtn = document.getElementById('clear-btn');
 const clearContextBtn = document.getElementById('clear-context-btn');
 const refreshBtn = document.getElementById('refresh-btn');
+const themeBtn = document.getElementById('theme-btn');
+const themeMenu = document.getElementById('theme-menu');
 
 let pageContext = null;
 let isGenerating = false;
 
 // Initialize
 async function init() {
-  updateStatus('(loading...)', 'loading');
+  updateStatus('...', 'loading');
 
   try {
     const response = await chrome.runtime.sendMessage({ type: 'getStatus' });
 
     if (response.statusType === 'ready') {
-      updateStatus('(ready to chat)', 'ready');
+      updateStatus('✓', 'ready');
       enableUI();
       populateModelSelector(response.models, response.model);
     } else {
-      updateStatus('(error)', 'error');
+      updateStatus('⚠️', 'error');
     }
   } catch (error) {
-    updateStatus('(error)', 'error');
+    updateStatus('⚠️', 'error');
   }
 
   // Load saved context
@@ -282,4 +284,42 @@ refreshBtn.addEventListener('click', async () => {
   refreshBtn.disabled = false;
 });
 
+// Theme handling
+function setTheme(theme) {
+  if (theme === 'default') {
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  // Update active state in menu
+  themeMenu.querySelectorAll('.theme-option').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.theme === theme);
+  });
+  chrome.storage.local.set({ theme });
+}
+
+async function loadTheme() {
+  const { theme } = await chrome.storage.local.get('theme');
+  if (theme) setTheme(theme);
+  else setTheme('default');
+}
+
+themeBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  themeMenu.classList.toggle('show');
+});
+
+themeMenu.addEventListener('click', (e) => {
+  const option = e.target.closest('.theme-option');
+  if (option) {
+    setTheme(option.dataset.theme);
+    themeMenu.classList.remove('show');
+  }
+});
+
+document.addEventListener('click', () => {
+  themeMenu.classList.remove('show');
+});
+
+loadTheme();
 init();
