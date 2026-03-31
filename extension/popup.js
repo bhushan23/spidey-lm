@@ -1,3 +1,5 @@
+import { renderMarkdown } from './lib/markdown.js';
+
 // DOM elements
 const statusEl = document.getElementById('status');
 const modelSelect = document.getElementById('model-select');
@@ -127,7 +129,14 @@ function updateContextUI() {
 function addMessage(content, role, save = true) {
   const div = document.createElement('div');
   div.className = 'message ' + role;
-  div.textContent = content;
+  div.dataset.raw = content; // Store raw content for saving
+
+  if (role === 'assistant') {
+    div.innerHTML = renderMarkdown(content);
+  } else {
+    div.textContent = content;
+  }
+
   chatContainer.appendChild(div);
   chatContainer.scrollTop = chatContainer.scrollHeight;
   if (save) saveChat();
@@ -138,9 +147,9 @@ async function saveChat() {
   const messages = [];
   chatContainer.querySelectorAll('.message').forEach(el => {
     if (el.classList.contains('user')) {
-      messages.push({ role: 'user', content: el.textContent });
+      messages.push({ role: 'user', content: el.dataset.raw || el.textContent });
     } else if (el.classList.contains('assistant')) {
-      messages.push({ role: 'assistant', content: el.textContent });
+      messages.push({ role: 'assistant', content: el.dataset.raw || el.textContent });
     }
   });
   await chrome.storage.local.set({ chatHistory: messages });
@@ -202,9 +211,12 @@ async function sendMessage(userMessage, systemPrompt = null) {
     });
 
     if (response?.success) {
-      assistantDiv.textContent = response.text;
+      assistantDiv.dataset.raw = response.text;
+      assistantDiv.innerHTML = renderMarkdown(response.text);
     } else {
-      assistantDiv.textContent = 'Error: ' + (response?.error || 'Unknown error');
+      const errorMsg = 'Error: ' + (response?.error || 'Unknown error');
+      assistantDiv.dataset.raw = errorMsg;
+      assistantDiv.textContent = errorMsg;
     }
     saveChat();
   } catch (error) {
