@@ -71,10 +71,9 @@ ollama pull llama3.2
 
 Recommended models:
 - `llama3.2` - Fast and lightweight, great for quick summaries
-- `llama3.2:1b` - Ultra-fast, minimal resources
-- `mistral` - Good balance of speed and quality
-- `gemma2` - Strong performance, efficient
-- `llama3.1` - More capable, needs more RAM
+- `gemma3:4b` - Strong performance, efficient
+- `gemma3:1b` - Lightweight Gemma, minimal resources
+- `qwen3:4b` - Fast and capable, great for chat
 
 ## Usage
 
