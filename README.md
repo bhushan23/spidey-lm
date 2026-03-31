@@ -20,6 +20,12 @@ Your friendly neighborhood Chrome extension for browsing with AI superpowers - r
 - **Model selection** - Use any of your downloaded Ollama models
 - **Auto-capture** - Quick actions automatically grab the current tab content
 
+## Screenshots
+
+| Simplify content | Key points extraction |
+|:--:|:--:|
+| ![Simplify example](assets/microgpt_simply.png) | ![AI Hub example](assets/ai_hub_example.png) |
+
 ## Prerequisites
 
 - [Ollama](https://ollama.ai) installed and running
