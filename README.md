@@ -55,8 +55,23 @@ Other recommended models:
 
 1. Click the Spidey LM icon in your Chrome toolbar
 2. Select your preferred model from the dropdown
-3. Click "Capture Page" to grab the current page content
-4. Use quick actions (Summarize, Key Points, Explain Simply) or ask your own questions
+3. Use quick actions (Summarize, Key Points, Explain Simply) or ask your own questions - page content is captured automatically
+
+## Testing
+
+Run unit tests:
+
+```bash
+cd extension
+npm install
+npm test
+```
+
+Run tests in watch mode:
+
+```bash
+npm run test:watch
+```
 
 ## Troubleshooting
 

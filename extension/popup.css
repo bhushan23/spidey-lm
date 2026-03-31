@@ -22,9 +22,33 @@ body {
 }
 
 header {
+  position: relative;
   text-align: center;
   padding-bottom: 12px;
   border-bottom: 1px solid #333;
+}
+
+.help-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2d2d44;
+  color: #888;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.help-link:hover {
+  background: #00d4ff;
+  color: #1a1a2e;
 }
 
 h1 {
