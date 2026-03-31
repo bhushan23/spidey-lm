@@ -15,6 +15,7 @@ const clearContextBtn = document.getElementById('clear-context-btn');
 const refreshBtn = document.getElementById('refresh-btn');
 const themeBtn = document.getElementById('theme-btn');
 const themeMenu = document.getElementById('theme-menu');
+const noModelsMsg = document.getElementById('no-models-msg');
 
 let pageContext = null;
 let isGenerating = false;
@@ -32,9 +33,11 @@ async function init() {
       populateModelSelector(response.models, response.model);
     } else {
       updateStatus('⚠️', 'error');
+      populateModelSelector([], null);
     }
   } catch (error) {
     updateStatus('⚠️', 'error');
+    populateModelSelector([], null);
   }
 
   // Load saved context
@@ -53,10 +56,14 @@ function populateModelSelector(models, currentModel) {
   modelSelect.innerHTML = '';
 
   if (!models || models.length === 0) {
-    modelSelect.innerHTML = '<option value="">No models available</option>';
+    modelSelect.classList.add('no-models');
     modelSelect.disabled = true;
+    noModelsMsg.style.display = 'block';
     return;
   }
+
+  modelSelect.classList.remove('no-models');
+  noModelsMsg.style.display = 'none';
 
   models.forEach(model => {
     const option = document.createElement('option');

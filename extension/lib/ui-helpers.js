@@ -39,7 +39,7 @@ export function populateSelectOptions(selectElement, options, currentValue) {
   selectElement.innerHTML = '';
 
   if (!options || options.length === 0) {
-    selectElement.innerHTML = '<option value="">No models available</option>';
+    selectElement.innerHTML = '<option value="">No models - run: ollama pull llama3.2 or download via Ollama app</option>';
     selectElement.disabled = true;
     return;
   }

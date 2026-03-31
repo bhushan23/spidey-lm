@@ -103,11 +103,11 @@ describe('UI Helpers', () => {
       expect(select.disabled).toBe(false);
     });
 
-    it('shows "No models available" when empty', () => {
+    it('shows download instruction when empty', () => {
       populateSelectOptions(select, [], null);
 
       expect(select.options.length).toBe(1);
-      expect(select.options[0].textContent).toBe('No models available');
+      expect(select.options[0].textContent).toBe('No models - run: ollama pull llama3.2 or download via Ollama app');
       expect(select.disabled).toBe(true);
     });
 
