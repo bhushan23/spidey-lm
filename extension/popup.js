@@ -12,6 +12,7 @@ const inputEl = document.getElementById('input');
 const sendBtn = document.getElementById('send-btn');
 const clearBtn = document.getElementById('clear-btn');
 const clearContextBtn = document.getElementById('clear-context-btn');
+const refreshBtn = document.getElementById('refresh-btn');
 
 let pageContext = null;
 let isGenerating = false;
@@ -271,6 +272,14 @@ clearContextBtn.addEventListener('click', async () => {
   await chrome.storage.local.remove('pageContext');
   updateContextUI();
   addMessage('Context cleared', 'system');
+});
+
+refreshBtn.addEventListener('click', async () => {
+  refreshBtn.classList.add('spinning');
+  refreshBtn.disabled = true;
+  await capturePage();
+  refreshBtn.classList.remove('spinning');
+  refreshBtn.disabled = false;
 });
 
 init();
