@@ -1,7 +1,0 @@
-{
-  "name": "buddy-lm",
-  "version": "1.0.0",
-  "description": "Chrome extension for local AI assistance using Ollama",
-  "keywords": ["llm", "ollama", "chrome-extension", "ai"],
-  "license": "Apache-2.0"
-}
