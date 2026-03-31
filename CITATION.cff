@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Spidey LM"
+authors:
+  - family-names: "Sonawane"
+    given-names: "Bhushan"
+    orcid: "https://orcid.org/0009-0007-2279-5368"
+repository-code: "https://github.com/bhushan23/spidey-lm"
+license: Apache-2.0

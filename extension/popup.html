@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spidey LM</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Spidey LM</h1>
+      <div class="model-selector">
+        <label for="model-select">Ollama Model:</label>
+        <select id="model-select" disabled>
+          <option value="">Loading...</option>
+        </select>
+        <span id="status" class="status-indicator"></span>
+      </div>
+    </header>
+
+    <div class="context-section" id="context-section">
+      <div id="context-info" class="context-info"></div>
+    </div>
+
+    <div class="actions" id="actions">
+      <button id="summarize-btn" class="btn-action" disabled>
+        Summarize
+      </button>
+      <button id="keypoints-btn" class="btn-action" disabled>
+        Key Points
+      </button>
+      <button id="explain-btn" class="btn-action" disabled>
+        Explain Simply
+      </button>
+    </div>
+
+    <div class="chat-container" id="chat"></div>
+
+    <div class="input-section">
+      <textarea
+        id="input"
+        placeholder="Ask about this page..."
+        rows="2"
+        disabled
+      ></textarea>
+      <button id="send-btn" disabled>Ask</button>
+    </div>
+
+    <div class="footer">
+      <button id="clear-btn" class="btn-link">Clear Chat</button>
+      <span class="separator">|</span>
+      <button id="clear-context-btn" class="btn-link">Clear Context</button>
+    </div>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
