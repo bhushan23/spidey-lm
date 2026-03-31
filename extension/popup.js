@@ -135,7 +135,12 @@ function addMessage(content, role, save = true) {
   div.dataset.raw = content; // Store raw content for saving
 
   if (role === 'assistant') {
-    div.innerHTML = renderMarkdown(content);
+    // Check if it's already HTML (like webbing indicator)
+    if (content.startsWith('<')) {
+      div.innerHTML = content;
+    } else {
+      div.innerHTML = renderMarkdown(content);
+    }
   } else {
     div.textContent = content;
   }
@@ -203,7 +208,8 @@ async function sendMessage(userMessage, systemPrompt = null) {
   disableUI();
 
   addMessage(userMessage, 'user');
-  const assistantDiv = addMessage('Thinking...', 'assistant');
+  const assistantDiv = addMessage('<span class="webbing-indicator"><span class="spider-icon">🕷️</span> Webbing...</span>', 'assistant', false);
+  assistantDiv.classList.add('webbing');
 
   try {
     const response = await chrome.runtime.sendMessage({
@@ -213,6 +219,7 @@ async function sendMessage(userMessage, systemPrompt = null) {
       systemPrompt
     });
 
+    assistantDiv.classList.remove('webbing');
     if (response?.success) {
       assistantDiv.dataset.raw = response.text;
       assistantDiv.innerHTML = renderMarkdown(response.text);
