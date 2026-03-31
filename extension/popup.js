@@ -77,7 +77,7 @@ async function handleModelChange() {
   if (!selectedModel) return;
 
   modelSelect.disabled = true;
-  updateStatus('(switching...)', 'loading');
+  updateStatus('...', 'loading');
 
   try {
     const response = await chrome.runtime.sendMessage({
@@ -86,12 +86,12 @@ async function handleModelChange() {
     });
 
     if (response.success) {
-      updateStatus('(ready to chat)', 'ready');
+      updateStatus('✓', 'ready');
     } else {
-      updateStatus('(error)', 'error');
+      updateStatus('⚠️', 'error');
     }
   } catch (error) {
-    updateStatus('(error)', 'error');
+    updateStatus('⚠️', 'error');
   }
 
   modelSelect.disabled = false;
