@@ -22,9 +22,9 @@ Your friendly neighborhood Chrome extension for browsing with AI superpowers - r
 
 ## Demo
 
-| Simplify content | Key points extraction |
+| Simplify content | Key Points Extraction |
 |:--:|:--:|
-| ![Simplify example](assets/microgpt_simply.png) | ![AI Hub example](assets/ai_hub_example.png) |
+| ![Simplify example](assets/microgpt_simply.png) | ![NASA keypoint](assets/nasa_keypoint.png) |
 
 ### Simplify Content
 
@@ -111,6 +111,10 @@ Start Ollama app or run `ollama serve` in terminal.
 
 ### "No models available"
 Download a model: `ollama pull llama3.2`
+
+## Built With
+
+Built with [Claude Code](https://claude.ai/code)
 
 ## License
 
