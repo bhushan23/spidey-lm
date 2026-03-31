@@ -22,15 +22,17 @@ Your friendly neighborhood Chrome extension for browsing with AI superpowers - r
 
 ## Demo
 
-### Simplify Content
-<video src="assets/simplify_ai_hub.mov" controls width="600"></video>
-
-### Summarize GitHub Issues
-<video src="assets/issue_summary.mov" controls width="600"></video>
-
 | Simplify content | Key points extraction |
 |:--:|:--:|
 | ![Simplify example](assets/microgpt_simply.png) | ![AI Hub example](assets/ai_hub_example.png) |
+
+### Simplify Content
+
+https://github.com/user-attachments/assets/d9f90c00-a57c-47bd-8c4d-0d4a17a799a6
+
+### Summarize GitHub Issues
+
+https://github.com/user-attachments/assets/c158cef2-85ab-4dab-b383-c115de21987a
 
 ## Prerequisites
 
