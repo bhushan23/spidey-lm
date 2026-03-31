@@ -8,22 +8,22 @@ import {
 
 describe('UI Helpers', () => {
   describe('formatContextInfo', () => {
-    it('returns empty string for missing title or content', () => {
-      expect(formatContextInfo(null, 'content')).toBe('');
-      expect(formatContextInfo('title', null)).toBe('');
-      expect(formatContextInfo(null, null)).toBe('');
+    it('returns empty string for missing title', () => {
+      expect(formatContextInfo(null)).toBe('');
+      expect(formatContextInfo(undefined)).toBe('');
+      expect(formatContextInfo('')).toBe('');
     });
 
-    it('formats context info with word count', () => {
-      const result = formatContextInfo('Page Title', 'one two three four five');
-      expect(result).toBe('Page Title (5 words)');
+    it('returns title as-is if under 50 chars', () => {
+      const result = formatContextInfo('Page Title');
+      expect(result).toBe('Page Title');
     });
 
-    it('truncates long titles', () => {
-      const longTitle = 'This is a very long page title that exceeds thirty characters';
-      const result = formatContextInfo(longTitle, 'content here');
-      expect(result).toContain('...');
-      expect(result.length).toBeLessThan(longTitle.length + 20);
+    it('truncates long titles over 50 chars', () => {
+      const longTitle = 'This is a very long page title that exceeds fifty characters limit';
+      const result = formatContextInfo(longTitle);
+      expect(result).toBe('This is a very long page title that exceeds fifty ...');
+      expect(result.length).toBe(53);
     });
   });
 

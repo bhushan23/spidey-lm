@@ -1,10 +1,8 @@
 // UI helper functions - testable module
 
-export function formatContextInfo(title, content) {
-  if (!title || !content) return '';
-  const wordCount = content.split(/\s+/).length;
-  const truncatedTitle = title.length > 30 ? title.substring(0, 30) + '...' : title;
-  return `${truncatedTitle} (${wordCount} words)`;
+export function formatContextInfo(title) {
+  if (!title) return '';
+  return title.length > 50 ? title.substring(0, 50) + '...' : title;
 }
 
 export function extractPageText(bodyClone) {

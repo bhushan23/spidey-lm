@@ -115,8 +115,8 @@ function disableUI() {
 
 function updateContextUI() {
   if (pageContext) {
-    const wordCount = pageContext.content.split(/\s+/).length;
-    contextInfo.textContent = `${pageContext.title.substring(0, 30)}... (${wordCount} words)`;
+    const title = pageContext.title.length > 50 ? pageContext.title.substring(0, 50) + '...' : pageContext.title;
+    contextInfo.textContent = title;
     contextInfo.className = 'context-info active';
   } else {
     contextInfo.textContent = '';

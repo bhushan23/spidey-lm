@@ -113,6 +113,9 @@ h1 {
 }
 
 .context-section {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-top: 12px;
   padding: 10px;
   background: #2d2d44;
